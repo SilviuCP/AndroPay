@@ -1,10 +1,9 @@
 package communication;
 
+import java.io.IOException;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.IOException;
-import java.net.ResponseCache;
 
 
 public class JsonUtils {
@@ -22,7 +21,7 @@ public class JsonUtils {
     return "Failed to convert response to Json";
     
   }
-
+  
   public static <T extends ResponseImpl> T readJsonResponse(String r, Class<T> type){
     ResponseImpl response = new ResponseImpl();
     try {

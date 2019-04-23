@@ -1,31 +1,22 @@
 package com.certsign.andropay.application;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.certsign.andropay.R;
-import com.certsign.andropay.bank.BankDashboard;
-import com.certsign.andropay.login.LoginHandler;
-import com.certsign.andropay.login.LoginRequest;
+import com.certsign.andropay.requests.LoginHandler;
 
-import communication.JsonUtils;
-import communication.LoginResponse;
 
 public class Runner extends AppCompatActivity {
 
     private EditText username;
     private EditText password;
     private Button login;
-
-    private LoginResponse response;
+    private Button settings;
 
 
     @Override
@@ -36,34 +27,26 @@ public class Runner extends AppCompatActivity {
         username = (EditText) findViewById(R.id.usernameTextField);
         password = (EditText) findViewById(R.id.passwordTextField);
         login = (Button) findViewById(R.id.loginButton);
-
+        settings = (Button) findViewById(R.id.settingsButton);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    //Stupid thing done just for testing, need to use AsyncTask on LoginHandler NOT to create thread on every button click;
-                    new Thread(new Runnable() {
-                        public void run() {
-                            try {
-                                String responseJson = LoginHandler.execute();
-                                response = JsonUtils.readJsonResponse(responseJson, LoginResponse.class);
-                                if (response.getSuccessful() == true) {
-                                    Intent intent = new Intent(Runner.this, BankDashboard.class);
-                                    startActivity(intent);
-                                }
-                                else if(response.getSuccessful() == false){
-                                    Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT).show();
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }).start();
+                    LoginHandler handler = new LoginHandler(v.getContext());
+                    handler.execute(username.getText().toString(), password.getText().toString());
 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+        });
+
+
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Runner.this, SettingsPage.class));
             }
         });
 

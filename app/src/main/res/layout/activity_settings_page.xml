@@ -5,81 +5,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="com.certsign.andropay.application.Runner">
-
-    <Button
-        android:id="@+id/settingsButton"
-        android:layout_width="56dp"
-        android:layout_height="49dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="8dp"
-        android:background="@drawable/settingsworktool128"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteX="320dp"
-        tools:layout_editor_absoluteY="454dp" />
+    tools:context="com.certsign.andropay.application.SettingsPage">
 
     <LinearLayout
-        android:layout_width="230dp"
-        android:layout_height="188dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="368dp"
+        android:layout_height="495dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498"
-        android:layout_marginEnd="8dp">
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
 
         <TextView
-            android:id="@+id/usernameLabel"
+            android:id="@+id/ipTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Username"
+            android:text="Ip Address"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/usernameTextField"
+            android:id="@+id/ipTextField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
+            android:text="192.168.76.193"
             android:textAlignment="center"
             android:textColor="@android:color/white" />
 
         <TextView
-            android:id="@+id/passwordLabel"
+            android:id="@+id/portTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Password"
+            android:text="Port"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/passwordTextField"
+            android:id="@+id/portTextField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPassword"
+            android:inputType="text"
+            android:text="7788"
             android:textAlignment="center"
             android:textColor="@android:color/white" />
 
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/saveSettingsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorAccent"
-            android:text="Login"
+            android:text="Save Settings"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
-
     </LinearLayout>
-
 </android.support.constraint.ConstraintLayout>
